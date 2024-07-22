@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Fare Calculator for [GrabTaxi]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+        .container {
+            display: flex;
+        }
+        .input-section, .output-section {
+            padding: 20px;
+            border: 0px solid black;
+        }
+        .input-section {
+            width: 3%;
+        }
+        .output-section {
+            width: 25%;
+            border-left: none;
+        }
+        input[type="number"] {
+    background-color: hwb(208 87% 1%); /* สีของช่องกรอกข้อมูล */
+    border: 2px solid #ccc;
+    padding: 5px;
+    margin-top: 10px;
+    width: 30%;
+    box-sizing: border-box;
+}
+        hr {
+            margin: 20px 0;
+        }
+        .note {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+            .highlight {
+            font-weight: bold;
+            background-color: hwb(152 7% 14%);    
+        }
+    </style>
+    <script>
+        function calculateFare() {
+            let distance = parseFloat(document.getElementById('distance').value);
+            let fare4SeaterBKK = calculateFare4SeaterBKK(distance);
+            let fare6SeaterBKK = calculateFare6SeaterBKK(distance);
+            let fareVIPBKK = calculateFareVIPBKK(distance);
+            let fare4SeaterPhuket = calculateFare4SeaterPhuket(distance);
+            let fareVIPPhuket = calculateFareVIPPhuket(distance);
+
+            document.getElementById('result-4seater-bkk').innerText = fare4SeaterBKK[0];
+            document.getElementById('result-4seater-bkk-with-tolerance').innerText = fare4SeaterBKK[1];
+            document.getElementById('result-6seater-bkk').innerText = fare6SeaterBKK[0];
+            document.getElementById('result-6seater-bkk-with-tolerance').innerText = fare6SeaterBKK[1];
+            document.getElementById('result-vip-bkk').innerText = fareVIPBKK[0];
+            document.getElementById('result-vip-bkk-with-tolerance').innerText = fareVIPBKK[1];
+            document.getElementById('result-4seater-phuket').innerText = fare4SeaterPhuket[0];
+            document.getElementById('result-4seater-phuket-with-tolerance').innerText = fare4SeaterPhuket[1];
+            document.getElementById('result-vip-phuket').innerText = fareVIPPhuket[0];
+            document.getElementById('result-vip-phuket-with-tolerance').innerText = fareVIPPhuket[1];
+        }
+
+        function calculateFare4SeaterBKK(distance) {
+            let baseFare = 35;
+            let fare = calculateDistanceFare(distance, baseFare, [6.50, 7, 8, 8.50, 9, 10.50]);
+            fare = makeOdd(fare);
+            return [fare, applyToleranceRange(fare)];
+        }
+
+        function calculateFare6SeaterBKK(distance) {
+            let baseFare = 40;
+            let fare = calculateDistanceFare(distance, baseFare, [6.50, 7, 8, 8.50, 9, 10.50]);
+            fare = makeEven(fare);
+            return [fare, applyToleranceRange(fare)];
+        }
+
+        function calculateFareVIPBKK(distance) {
+            let baseFare = 150;
+            let fare = baseFare + distance * 14;
+            fare = Math.ceil(fare);
+            fare = makeEven(fare);
+            return [fare, applyToleranceRange(fare)];
+        }
+
+        function calculateFare4SeaterPhuket(distance) {
+            let baseFare = 200;
+            let fare = baseFare + distance * 13.50;
+            fare = Math.ceil(fare);
+            fare = makeEven(fare);
+            return [fare, applyToleranceRange(fare)];
+        }
+
+        function calculateFareVIPPhuket(distance) {
+            let baseFare = 150;
+            let fare = baseFare + distance * 16;
+            fare = Math.ceil(fare);
+            fare = makeEven(fare);
+            return [fare, applyToleranceRange(fare)];
+        }
+
+        function calculateDistanceFare(distance, baseFare, rates) {
+            let fare = 0;
+            if (distance <= 10) {
+                fare = distance * rates[0];
+            } else if (distance <= 20) {
+                fare = 10 * rates[0] + (distance - 10) * rates[1];
+            } else if (distance <= 40) {
+                fare = 10 * rates[0] + 10 * rates[1] + (distance - 20) * rates[2];
+            } else if (distance <= 60) {
+                fare = 10 * rates[0] + 10 * rates[1] + 20 * rates[2] + (distance - 40) * rates[3];
+            } else if (distance <= 80) {
+                fare = 10 * rates[0] + 10 * rates[1] + 20 * rates[2] + 20 * rates[3] + (distance - 60) * rates[4];
+            } else {
+                fare = 10 * rates[0] + 10 * rates[1] + 20 * rates[2] + 20 * rates[3] + 20 * rates[4] + (distance - 80) * rates[5];
+            }
+            return Math.ceil(baseFare + fare);
+        }
+
+        function makeOdd(fare) {
+            return fare % 2 === 0 ? fare + 1 : fare;
+        }
+
+        function makeEven(fare) {
+            return fare % 2 !== 0 ? fare + 1 : fare;
+        }
+
+        function applyToleranceRange(fare) {
+            let minTolerance = Math.ceil(fare * 1.10);
+            let maxTolerance = Math.ceil(fare * 1.20);
+            return `${minTolerance}-${maxTolerance}`;
+        }
+
+        window.onload = function() {
+            document.getElementById('distance').addEventListener('input', calculateFare);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h6 class="wp-block-heading has-text-align-right" style="margin-right:0;margin-left:calc( var(--wp--preset--spacing--20) * -1);font-size:4rem;line-height:1;writing-mode:vertical-rl">GrabTaxi</h6>
+        </div>
+        <div class="output-section">
+            <h1 style="margin: 0;">Fare Calculator</h1> 
+            <h3 style="margin: 0;">GCS - TH Payment Operation Digital Team</h3> 
+            <p style="margin: 0;">[Singha Project] Made with 💚 by thanapat.bo<p>
+                <h3>กรอกข้อมูลตามนี้ครับ 🧑‍💻👩‍💻</h3>
+            <label for="distance">🚘 ระยะทาง (กิโลเมตร):</label>
+            <input type="number" id="distance" step="0.01">
+        </div>
+        <div class="output-section">
+            <h2>Estimated Meter Fare (ค่ามิเตอร์โดยประมาณ)</h2>
+            <h3 class="highlight">🚕 GrabTaxi BKK (4-seater)</h3>
+            <p> ค่ามิเตอร์ตามระยะทาง: <span id="result-4seater-bkk">0</span> บาท</p>
+            <p> ค่ามิเตอร์พร้อมค่าความคลาดเคลื่อน 🔃: <span id="result-4seater-bkk-with-tolerance">0</span> บาท</p>
+
+            <h3 class="highlight">🚕 GrabTaxi BKK (6-seater)</h3>
+            <p> ค่ามิเตอร์ตามระยะทาง: <span id="result-6seater-bkk">0</span> บาท</p>
+            <p> ค่ามิเตอร์พร้อมค่าความคลาดเคลื่อน 🔃: <span id="result-6seater-bkk-with-tolerance">0</span> บาท</p>
+
+            <h3 class="highlight">🚕 GrabTaxi BKK (VIP)</h3>
+            <p> ค่ามิเตอร์ตามระยะทาง: <span id="result-vip-bkk">0</span> บาท</p>
+            <p> ค่ามิเตอร์พร้อมค่าความคลาดเคลื่อน 🔃: <span id="result-vip-bkk-with-tolerance">0</span> บาท</p>
+
+            <h3 class="highlight">🚕 GrabTaxi Phuket (4-seater)</h3>
+            <p> ค่ามิเตอร์ตามระยะทาง: <span id="result-4seater-phuket">0</span> บาท</p>
+            <p> ค่ามิเตอร์พร้อมค่าความคลาดเคลื่อน 🔃: <span id="result-4seater-phuket-with-tolerance">0</span> บาท</p>
+
+            <h3 class="highlight">🚕 GrabTaxi Phuket (VIP)</h3>
+            <p> ค่ามิเตอร์ตามระยะทาง: <span id="result-vip-phuket">0</span> บาท</p>
+            <p> ค่ามิเตอร์พร้อมค่าความคลาดเคลื่อน 🔃: <span id="result-vip-phuket-with-tolerance">0</span> บาท</p>
+        </div>
+    </div>
+    <hr>
+    <div class="note">
+        <p>หมายเหตุ</p>
+        <ol>
+            <li>สำหรับใช้คำนวณเพื่อเทียบเคียงค่ามิเตอร์ในกรณีที่คนขับไม่เปิดมิเตอร์ในการเดินทาง หรืออื่นๆ ที่เกี่ยวข้องเท่านั้น</li>
+            <li>โปรดทราบว่าค่ามิเตอร์จากไฟล์นี้ไม่สามารถใช้อ้างอิงข้อมูลแบบเฉพาะเจาะจงได้ เนื่องจากมีปัจจัยอื่นๆ ที่เกี่ยวข้องซึ่งไม่ได้ถูกนำมาคำนวณ</li>
+            <li>ค่ามิเตอร์พร้อมค่าความคลาดเคลื่อน หมายถึงค่ามิเตอร์จากระยะทางจริง+10-20% ของกรณีเวลารถติด/เคลื่อนที่ช้า หรือไม่สามารถเคลื่อนที่ได้ ซึ่งเป็นกรณีที่เกิดขึ้นได้ตามปกติ</li>
+            <li>สำหรับ GrabTaxi ค่าโดยสารที่แสดงบนแอปฯ เป็นราคาประเมินของมิเตอร์ของแท็กซี่เท่านั้น ซึ่งค่าโดยสารจริงอาจเปลี่ยนแปลงตามปัจจัยที่ควบคุมไม่ได้ เช่น สภาพการจราจร สภาพอากาศ ที่ส่งผลให้ค่ามิเตอร์สูงขึ้น</li>
+            <li>กรณี GrabTaxi ไม่สามารถเคลื่อนที่ไปได้เกินกว่า 6 กิโลเมตรต่อชั่วโมง มิเตอร์จะคิดเพิ่มนาทีละ 3.00 บาท และหรือเรทอื่นๆ ตามประเภทของบริการในแต่ละจังหวัด</li>
+            <li>ให้ใช้เพื่อตรวจสอบข้อมูลเพื่อวัตถุประสงค์สำหรับการทำงานภายในบริษัทฯ เท่านั้น ห้ามผู้ใดทำซ้ำ คัดลอก ลอกเลียน ดัดแปลง ปลอมแปลง เผยแพร่ ส่งผ่าน หรือกระทำการใดๆ โดยไม่ได้รับอนุญาตอย่างเป็นทางการ</li>
+            <li>อ้างอิงข้อมูลจาก <a href="https://www.ratchakitcha.soc.go.th/DATA/PDF/2566/E/008/T_0011.PDF" target="_blank">ประกาศกระทรวงคมนาคม</a> เรื่อง กำหนดอัตราค่าจ้างบรรทุกคนโดยสาร และค่าบริการอื่นสำหรับรถยนต์รับจ้างบรรทุกคนโดยสารไม่เกิน 7 คน ที่จดทะเบียนในเขตกรุงเทพมหานคร พ.ศ. 2565</li>
+            <li>Latest updated version: July 2024</li>
+        </ol>
+    </div>
+    <div style="text-align: right; font-size: 12px;">
+        <p style="margin: 0;"><em>Copyright &copy; 2024 Thanapat Boonchum All right reserved</em></p>
+        <p style="margin: 0;"><em>[G] Grab Support Professional - SME</em></p>
+        <p style="margin: 0;"><em>GrabTaxi Thailand Co. Ltd.</em></p>  
+    </div>
+</body>
+</html>
