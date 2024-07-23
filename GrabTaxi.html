@@ -44,6 +44,19 @@
             font-weight: bold;
             background-color: hwb(152 7% 14%);    
         }
+        .button-class {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #0571ff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+        .button-class:hover {
+            background-color: #00B14F;
+        }
     </style>
     <script>
         function calculateFare() {
@@ -153,9 +166,13 @@
                 <h3>กรอกข้อมูลตามนี้ครับ 🧑‍💻👩‍💻</h3>
             <label for="distance">🚘 ระยะทาง (กิโลเมตร):</label>
             <input type="number" id="distance" step="0.01">
-        </div>
+            <br>
+            <br>
             <div class="button-container">
-        <a href="index.html" class="button-class">Home 🏡</a>
+    <a href="index.html" class="button-class">Home 🏡</a>
+    <br>
+</div>
+        </div>
         <div class="output-section">
             <h2>Estimated Meter Fare (ค่ามิเตอร์โดยประมาณ)</h2>
             <h3 class="highlight">🚕 GrabTaxi BKK (4-seater)</h3>
