@@ -45,6 +45,19 @@
             font-weight: bold;
             background-color: hwb(152 7% 14%);   
         }
+        .button-class {
+            display: inline-block;
+            padding: 8px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #434343;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+        .button-class:hover {
+            background-color: #00B14F
+        }
     </style>
     <script>
         function calculateFare() {
@@ -96,6 +109,11 @@
             <br>
             <label for="dax-net-earning">5️⃣ รายได้สุทธิคนขับ (DAX Net Earning) (THB):</label>
             <input type="number" id="dax-net-earning" step="0.01">
+            <br>
+            <br>
+            <div class="button-container">
+    <a href="index.html" class="button-class">HOMEBOY 🏡</a>
+    <br>
         </div>
         <div class="output-section">
             <h2>ดึงเงิน/คืนเงินตามนี้ครับ 😎</h2>
