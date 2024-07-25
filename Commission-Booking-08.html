@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="GrabRent">
+    <meta name="description" content="">
+    <title>Commission Booking-08</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Commission-Booking-08.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="referrer" content="origin">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Site1"
+  }</script>
+  <script>
+       function calculateFare() {
+           let a1 = parseFloat(document.getElementById('a1').value) || 0;
+           let a2 = parseFloat(document.getElementById('a2').value) || 0;
+           let a3 = parseFloat(document.getElementById('a3').value) || 0;
+           let a4 = parseFloat(document.getElementById('a4').value) || 0;
+           let a5 = parseFloat(document.getElementById('a5').value) || 0;
+           let a6 = parseFloat(document.getElementById('a6').value) || 0;
+           let a7 = parseFloat(document.getElementById('a7').value) || 0;
+           let a8 = parseFloat(document.getElementById('a8').value) || 0;
+
+           let b1 = a2 - a3;
+           let b2 = a4 / a2;
+           let b3 = b2 * a3;
+           let b4 = (a7 - a1) + b3 + a8;
+           let b5 = a4 + a7 + a8;
+           let b6 = (b3 + b4) * (a6 / 100);
+           let b7 = (a7 + a4) - a5;
+           let b8 = (b4 + b3) - b6;
+           let b9 = b4 - b5;
+           let b10 = b8 - b7;
+
+           document.getElementById('b1').innerText = b1.toFixed(2);
+           document.getElementById('b2').innerText = b2.toFixed(2);
+           document.getElementById('b3').innerText = b3.toFixed(2);
+           document.getElementById('b4').innerText = b4.toFixed(2);
+           document.getElementById('b5').innerText = b5.toFixed(2);
+           document.getElementById('b6').innerText = b6.toFixed(2);
+           document.getElementById('b7').innerText = b7.toFixed(2);
+           document.getElementById('b8').innerText = b8.toFixed(2);
+           document.getElementById('b9').innerText = b9.toFixed(2);
+           document.getElementById('b10').innerText = b10.toFixed(2);
+       }
+
+       document.addEventListener("input", calculateFare);
+   </script>
+    <meta name="theme-color" content="#4894b6">
+    <meta property="og:title" content="Commission Booking-08">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+    <section class="u-clearfix u-palette-2-base u-section-1" id="carousel_a817">
+      <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <div class="custom-expanded u-align-left u-container-style u-group u-radius u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h2 class="u-align-left u-text u-text-1"><span class="u-icon"></span>
+              <span style="font-size: 3.125rem;">Commission Booking&nbsp;</span>
+              <br>
+              <span style="font-size: 1.75rem;">คำนวณส่วนต่างตามระยะทาง</span>
+              <span style="font-size: 1.875rem;">
+                <br>
+              </span>
+              <span style="font-size: 2.125rem;">สำหรับบุ้กกิ้งปกติที่คิดค่าคอมมิชชัน</span>
+              <br>
+              <br>
+            </h2>
+            <div class="custom-expanded u-align-left u-form u-form-1">
+              <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" style="padding: 0px;" source="email" name="form">
+                <div class="u-form-group u-form-name">
+                  <label for="a1" class="u-label u-label-1" wfd-invisible="true">1️⃣ ส่วนต่างจากไฟล์ <a href="https://docs.google.com/spreadsheets/d/1blCH9-Unz7P2MCMTkC3Up75JSmI8hGSqL8lcsbDJGqY/edit?gid=1118343671#gid=1118343671" class="button-class" target="_blank">TR Fare Calculation_Apr 2023</a> (ช่อง"ราคาส่วนต่าง") (THB):</label>
+                  <input type="number" placeholder="กรอกส่วนต่างจากไฟล์ด้านบน" id="a1" name="a1" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-1" required="">
+                </div>
+                <div class="u-form-group u-form-group-2">
+                  <label for="a2" class="u-label u-label-2">2️⃣ ระยะทางเก่า Estimate route (KM): </label>
+                  <input type="a2" placeholder="กรอกระยะทางเก่า " id="a2" name="a2" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-2" required="required">
+                </div>
+                <div class="u-form-group">
+                  <label for="a3" class="u-label u-label-3" wfd-invisible="true">3️⃣ ระยะทางใหม่ Actual route (KM): </label>
+                  <input type="number" placeholder="กรอกระยะทางใหม่" id="a3" name="a3" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-3" required="required">
+                </div>
+                <div class="u-form-group">
+                  <label for="a7" class="u-label u-label-4" wfd-invisible="true">4️⃣ DAX Fare (Phoenix &gt; Driver Earnings &gt; Fare) (THB): </label>
+                  <input placeholder="กรอก DAX Fare จากหน้า Driver Earnings" rows="2" cols="50" id="a7" name="a7" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-4" required="required" type="number">
+                </div>
+                <div class="u-form-group u-form-group-5">
+                  <label for="a4" class="u-label u-label-5">5️⃣ DAX Surcharge (Phoenix &gt; Driver Earnings &gt; Surcharge) (THB): </label>
+                  <input type="number" placeholder="กรอก DAX Surcharge จากหน้า Driver Earnings" id="a4" name="a4" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-5" required="required">
+                </div>
+                <div class="u-form-group u-form-group-6">
+                  <label for="a5" class="u-label u-label-6">6️⃣ DAX Commission (Phoenix &gt; Driver Earnings &gt; Commission) (THB): </label>
+                  <input type="number" placeholder="กรอก DAX Commission จากหน้า Driver Earnings" id="a5" name="a5" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-6" required="required">
+                </div>
+                <div class="u-form-group u-form-group-7">
+                  <label for="a6" class="u-label u-label-7">7️⃣ DAX Commission (%):</label>
+                  <input type="number" placeholder="กรอก % ของ DAX Commission" id="a6" name="a6" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-7" required="required">
+                </div>
+                <div class="u-form-group u-form-group-8">
+                  <label for="a8" class="u-label u-label-8">8️⃣ PAX Platform fee/Booking Fee (THB): </label>
+                  <input type="number" placeholder="กรอก Platform fee/Booking Fee" id="a8" name="a8" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-8" required="required">
+                </div>
+                <div class="u-align-left u-form-group u-form-submit u-label-top">
+                  <input type="GOGO" value="GOGO" class="u-form-control-hidden" wfd-invisible="true">
+                  <a href="#" class="u-border-1 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">GOGO</a>
+                </div>
+              </form>
+            </div>
+            <div class="custom-expanded u-list u-list-1">
+              <div class="u-repeater u-repeater-1">
+                <div class="u-black u-container-align-left u-container-style u-list-item u-radius u-repeater-item u-shape-round u-list-item-1">
+                  <div class="u-container-layout u-similar-container u-container-layout-2">
+                    <h5 class="u-text u-text-default u-text-2">REFUND PAX (THB): <br><span id="b9">0.00</span></h5>
+                    <h5 class="u-text u-text-default u-text-3">CLAWBACK DAX (THB): <br><span id="b10">0.00</span></h5>
+                    <ul class="u-text u-text-4">
+                      <li>ส่วนต่างระยะทาง: <span id="b1">0.00</span></li>
+                      <li>SURCHARGE/KM (OLD): <span id="b2">0.00</span></li>
+                      <li>SURCHARGE/KM (NEW): <span id="b3">0.00</span></li>
+                      <li>ค่าโดยสารใหม่ (THB): <span id="b4">0.00</span></li>
+                      <li>ค่าโดยสารเดิม (THB): <span id="b5">0.00</span></li>
+                      <li>ค่าคอมมิชชันใหม่ (THB): <span id="b6">0.00</span></li>
+                      <li>NET EARNINGS เก่า (THB): <span id="b7">0.00</span></li>
+                      <li>NET EARNINGS ใหม่ (THB): <span id="b8">0.00</span></li>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <blockquote class="u-align-left u-border-palette-2-base u-text u-text-5"> สำหรับใช้คำนวณราคาค่าโดยสารส่วนต่าง ในงานรูปแบบปกติที่มีการคิดค่า Commission จากคนขับ ในกรณีเปลี่ยนจุดหมาย/ลงกลางทาง หรือ Multi-stop Rides ที่สาเหตุเกิดจากคนขับและเข้าเงื่อนไขเท่านั้น<br>
+              <br>ให้ใช้เพื่อตรวจสอบข้อมูลเพื่อวัตถุประสงค์สำหรับการทำงานภายในบริษัทฯ เท่านั้น ห้ามผู้ใดทำซ้ำ คัดลอก ลอกเลียน ดัดแปลง ปลอมแปลง เผยแพร่ ส่งผ่าน หรือกระทำการใดๆ โดยไม่ได้รับอนุญาตอย่างเป็นทางการ<br>
+              <br>Copyright © 2024 Thanapat Boonchum All right reserved<br>
+            </blockquote>
+            <a href="Main.html" class="u-align-center u-border-none u-btn u-btn-round u-button-style u-hover-palette-2-light-2 u-palette-2-base u-radius u-btn-2"><span class="u-file-icon u-icon u-icon-2"><img src="images/1717696.png" alt=""></span>&nbsp; &nbsp; ​HOMEBOY
+              <style>
+                .u-btn-1 {
+                  display: none;
+                }
+              </style>
+              <style>
+          
+                .button-class {
+                    display: inline-block;
+                    padding: 5px 5px;
+                    font-size: 16px;
+                    color: white;
+                    background-color: #ff0000;
+                    text-align: center;
+                    text-decoration: none;
+                    border-radius: 10px;
+                }
+                .button-class:hover {
+                    background-color: #d87070;
+                }
+            </style>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    
+    <section class="u-backlink u-clearfix u-grey-80">
+      <p class="u-text">
+        <span>Copyright © 2024 Thanapat Boonchum All right reserved </span>
+        </a>
+      </p>
+    </section>
+  
+</body></html>
