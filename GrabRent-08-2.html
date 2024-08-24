@@ -31,10 +31,10 @@
         let farePerHour = paxMeterFare / rentalHours;
         let farePerMinute = farePerHour / 60;
         let newPaxFare = (actualHours * 60 * farePerMinute) + (actualMinutes * farePerMinute);
-        let newDaxEarning = newPaxFare - (newPaxFare * 0.25);
+        let newDaxEarning = newPaxFare - (newPaxFare * 0.15);
         let refundPax = paxMeterFare - newPaxFare;
         let clawbackDax = daxNetEarning - newDaxEarning;
-        let topupDax = (paxMeterFare * 0.25) - (newPaxFare *0.25);
+        let topupDax = (paxMeterFare * 0.15) - (newPaxFare *0.15);
   
         document.getElementById('fare-per-hour').innerText = farePerHour.toFixed(2);
         document.getElementById('fare-per-minute').innerText = farePerMinute.toFixed(2);
