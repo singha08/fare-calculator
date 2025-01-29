@@ -328,33 +328,22 @@
                     <div>
                     </div>
                     <br>
-<a href="javascript:void(0);" onclick="checkAgentPassword()" class="u-btn u-palette-1-base u-radius u-btn-2" 
+   <a href="Main.html" class="u-btn u-palette-1-base u-radius u-btn-2" 
    style="background-color: #000000 !important; color: #ffffff !important; border-color: #000000 !important;" 
    onmouseover="this.style.backgroundColor='#00B14F'; this.style.color='#ffffff'; this.style.borderColor='#00B14F';" 
    onmouseout="this.style.backgroundColor='#000000'; this.style.color='#ffffff'; this.style.borderColor='#03833c';">
  FOR AGENT 
 </a>
-
-<a href="javascript:void(0);" onclick="checkSupportPassword()" class="u-btn u-palette-1-base u-radius u-btn-2" 
+                    <a href="javascript:void(0);" onclick="checkPassword()" class="u-btn u-palette-1-base u-radius u-btn-2" 
    style="background-color: #000000 !important; color: #ffffff !important; border-color: #03833c !important;" 
    onmouseover="this.style.backgroundColor='#00538f'; this.style.color='#ffffff'; this.style.borderColor='#00B14F';" 
    onmouseout="this.style.backgroundColor='#000000'; this.style.color='#ffffff'; this.style.borderColor='#03833c';">
 FOR SUPPORT
 </a>
-
 <script>
-  function checkAgentPassword() {
-    var password = prompt("Please enter the password for Agent:");
-    if (password === "AgentPassword") { // เปลี่ยน "AgentPassword" เป็นรหัสผ่านที่ต้องการ
-      window.location.href = "Main.html"; // เปลี่ยนเส้นทางตามต้องการ
-    } else {
-      alert("Incorrect password. Please try again.");
-    }
-  }
-
-  function checkSupportPassword() {
-    var password = prompt("Please enter the password for Support:");
-    if (password === "SSSupportPassword") { // เปลี่ยน "SupportPassword" เป็นรหัสผ่านที่ต้องการ
+  function checkPassword() {
+    var password = prompt("Please enter the password:");
+    if (password === "MyPassword") { // เปลี่ยน "yourPassword" เป็นรหัสผ่านที่ต้องการ
       window.location.href = "Main.html"; // เปลี่ยนเส้นทางตามต้องการ
     } else {
       alert("Incorrect password. Please try again.");
